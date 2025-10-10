@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Gestión de Vehículos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <h1>Gestión de Vehículos</h1>
+
+  <h2>Consulta por ID (GET)</h2>
+  <form method="get" accept-charset="utf-8">
+    <label for="id">ID:</label>
+    <input type="number" id="id" name="id" min="1" />
+    <button type="submit">Buscar</button>
+  </form>
+
+  <hr>
+
+  <h2>Alta de vehículo (POST)</h2>
+  <form method="post" accept-charset="utf-8">
+    <p>Pega los datos de un vehículo del fichero 'vehiculos_prueba' en el área de texto y envíalo.</p>
+    <textarea id="jsonPost" name="jsonPost" rows="10" cols="60" spellcheck="false">{
+      "id": 20,
+      "tipo": "coche",
+      "marca": "Renault",
+      "modelo": "Clio",
+      "anio": 2020,
+      "puertas": 5
+    }</textarea>
+        <br>
+        <button type="submit">Guardar</button>
+  </form>
+
+</body>
+</html>

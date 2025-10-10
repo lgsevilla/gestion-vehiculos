@@ -1,0 +1,7 @@
+// para copiar y pegar en la caja de texto del POST y poder hacer pruebas
+{ "id":11, "tipo": "coche", "marca": "Renault", "modelo": "Clio","anio": 2020, "puertas": 5 }
+{ "id":12, "tipo": "coche", "marca": "SEAT",    "modelo": "Ibiza","anio": 2018, "puertas": 3 }
+{ "id":13, "tipo": "coche", "marca": "Toyota",  "modelo": "Corolla","anio": 2022, "puertas": 3 }
+{ "id":14, "tipo": "moto",  "marca": "Yamaha",  "modelo": "MT-07","anio": 2021, "sidecar": 0 }
+{ "id":15, "tipo": "moto",  "marca": "Harley-Davidson", "modelo": "Sportster", "anio": 2019, "sidecar": 1 }
+{ "id":16, "tipo": "moto",  "marca": "Honda",   "modelo": "PCX 125","anio": 2023, "sidecar": 0 }
