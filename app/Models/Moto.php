@@ -16,7 +16,7 @@ class Moto extends Vehiculo
         parent::__construct($id, $marca, $modelo, $anio, $tipo);
     }
 
-    public function hasSidecare(): bool
+    public function hasSidecar(): bool
     {
         return $this->sidecar;
     }
