@@ -21,7 +21,7 @@ Desarrollarás una web tipo SSR para una empresa de gestión de vehículos. Esta
 
 #### Ejercicio 1: Arquitectura
 
-- Crea una arquitectura MVC e incluye los ficheros que te facilito en el apartado de *recursos* en lod directorios que corresponda.
+- Crea una arquitectura MVC e incluye los ficheros que te facilito en el apartado de *recursos* en los directorios que corresponda.
 - Al iniciar la aplicación se debe cargar la interfaz gráfica `index.html`, y esta llamará al *front-controller*.
 - La aplicación empleará *namespaces* y el fichero `autoload.php` generado mediante *Composer* para gestionar las rutas.
 - Crea un modelo de datos basado en tres clases. Utilizando la herencia, representa los diferentes tipos de vehículos:

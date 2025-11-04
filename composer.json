@@ -1,0 +1,11 @@
+{
+    "name": "lgsevilla/gestion-vehiculos",
+    "description": "DWES - Gestión de Vehículos (MVC)",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}

@@ -1,5 +1,11 @@
 <?php
+declare(strict_types= 1);
 
+namespace App\Controllers;
+
+use App\Models\Vehiculo;
+use App\Models\Coche;
+use App\Models\Moto;
 
 class VehicleController {
     

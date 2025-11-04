@@ -9,7 +9,7 @@
   <h1>Gestión de Vehículos</h1>
 
   <h2>Consulta por ID (GET)</h2>
-  <form method="get" accept-charset="utf-8">
+  <form method="get" action="index.php" accept-charset="utf-8">
     <label for="id">ID:</label>
     <input type="number" id="id" name="id" min="1" />
     <button type="submit">Buscar</button>
@@ -18,7 +18,7 @@
   <hr>
 
   <h2>Alta de vehículo (POST)</h2>
-  <form method="post" accept-charset="utf-8">
+  <form method="post" action="index.php" accept-charset="utf-8">
     <p>Pega los datos de un vehículo del fichero 'vehiculos_prueba' en el área de texto y envíalo.</p>
     <textarea id="jsonPost" name="jsonPost" rows="10" cols="60" spellcheck="false">{
       "id": 20,
