@@ -9,30 +9,95 @@ use App\Models\Moto;
 
 class VehicleController {
     
-    public function store(array $vehiculoData): ?Vehiculo{
-        
-        return null;       
+    public function store(array $vehiculoData): ?Vehiculo
+    {
+        static $rows = null;
+
+        $tipo = strtolower((string)($vehiculoData['tipo'] ?? ''));
+        $id = (int)($vehiculoData['id'] ?? 0);
+        $marca = (string)($vehiculoData['marca'] ?? '');
+        $modelo = (string)($vehiculoData['modelo'] ?? '');
+        $anio = (int)($vehiculoData['anio'] ?? 0);
+
+        if (!$id || !$tipo || !$marca || !$modelo || !$anio) {
+            return null;
+        }
+
+        if ($tipo === 'coche') {
+            if (!isset($vehiculoData['puertas'])) return null;
+            $veh = new Coche($id, $marca, $modelo, $anio, 'coche', (int)$vehiculoData['puertas']);
+            $row = [
+                'id' => $id,
+                'marca' => $marca,
+                'modelo' => $modelo,
+                'anio' => $anio,
+                'tipo' => 'coche',
+                'puertas' => (int)$vehiculoData['puertas'],
+            ];
+        } elseif ($tipo === 'moto') {
+            if (!array_key_exists('sidecar', $vehiculoData)) return null;
+            $veh = new Moto($id, $marca, $modelo, $anio, 'moto', (bool)$vehiculoData['sidecar']);
+            $row = [
+                'id' => $id,
+                'marca' => $marca,
+                'modelo' => $modelo,
+                'anio' => $anio,
+                'tipo' => 'moto',
+                'sidecar' => (bool)$vehiculoData['sidecar'],
+            ];
+        } else {
+            return null;
+        }
+
+        if ($rows === null) {
+            require_once __DIR__ . '/../Data/vehiculos_bbdd.php';
+            $rows = defined('VEHICULOS') ? VEHICULOS : [];
+        }
+
+        foreach ($rows as $existing) {
+            if ((int)($existing['id'] ?? 0) === $id) {
+                return $veh;
+            }
+        }
+
+        $rows[] = $row;
+
+        $export = var_export($rows, true);
+        $content = <<<PHP
+        <?php
+        define('VEHICULOS',
+        $export
+        );
+        ?>
+        PHP;
+
+        $path = __DIR__ . '/../Data/vehiculos_bbdd.php';
+        $bytes = file_put_contents($path, $content, LOCK_EX);
+        if ($bytes === false) {
+            throw new \RuntimeException("No se pudo escribir $path");
+        }
+
+        return $veh;
     }
 
     public function getById(int $id): ?Vehiculo
     {
-       if ($id <= 0) return null;
+        if ($id <= 0) return null;
 
-       foreach ($this->leerVehiculos() as $vehiculo) {
+        foreach ($this->leerVehiculos() as $vehiculo) {
             if ($vehiculo->getId() === $id) {
                 return $vehiculo;
             }
-       }
-       return null;
-        
+        }
+
+        return null;
     }
     
-    private function leerVehiculos(): array 
+    public function leerVehiculos(): array 
     {
         require_once __DIR__ . '/../Data/vehiculos_bbdd.php';
         $rows = defined('VEHICULOS') ? VEHICULOS : [];
 
-        
         $out = [];
         foreach ($rows as $r) {
             $id = (int)($r['id'] ?? 0);
