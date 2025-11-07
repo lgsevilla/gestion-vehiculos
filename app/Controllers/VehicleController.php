@@ -9,6 +9,14 @@ use App\Models\Moto;
 
 class VehicleController {
     
+    private function dataPath(): string
+    {
+        if (getenv('RAILWAY_ENVIRONMENT') || getenv('RAILWAY_PROJECT_ID')) {
+            return rtrim(sys_get_temp_dir(), '/') . '/vehiculos_bbdd.php';
+        }
+
+        return __DIR__ . '/../Data/vehiculos_bbdd.php';
+    }
     public function store(array $vehiculoData): ?Vehiculo
     {
         static $rows = null;
@@ -50,8 +58,16 @@ class VehicleController {
         }
 
         if ($rows === null) {
-            require_once __DIR__ . '/../Data/vehiculos_bbdd.php';
-            $rows = defined('VEHICULOS') ? VEHICULOS : [];
+            $path = $this->dataPath();
+            
+            if (file_exists($path)) {
+                include $path;
+                $rows = defined('VEHICULOS') ? VEHICULOS : [];
+            } else {
+                include __DIR__ . '/../Data/vehiculos_bbdd.php';
+                $rows = defined('VEHICULOS') ? VEHICULOS : [];
+            }
+            
         }
 
         foreach ($rows as $existing) {
@@ -71,7 +87,7 @@ class VehicleController {
         ?>
         PHP;
 
-        $path = sys_get_temp_dir() . '/../Data/vehiculos_bbdd.php';
+        $path = $this->dataPath();
         $bytes = file_put_contents($path, $content, LOCK_EX);
         if ($bytes === false) {
             throw new \RuntimeException("No se pudo escribir $path");
@@ -95,7 +111,15 @@ class VehicleController {
     
     public function leerVehiculos(): array 
     {
-        require_once __DIR__ . '/../Data/vehiculos_bbdd.php';
+
+        $path = $this->dataPath();
+
+        if(file_exists($path)) {
+            include $path;
+        } else {
+            include __DIR__ . '/../Data/vehiculos_bbdd.php';
+        }
+        
         $rows = defined('VEHICULOS') ? VEHICULOS : [];
 
         $out = [];
