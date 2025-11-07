@@ -71,7 +71,7 @@ class VehicleController {
         ?>
         PHP;
 
-        $path = __DIR__ . '/../Data/vehiculos_bbdd.php';
+        $path = sys_get_temp_dir() . '/../Data/vehiculos_bbdd.php';
         $bytes = file_put_contents($path, $content, LOCK_EX);
         if ($bytes === false) {
             throw new \RuntimeException("No se pudo escribir $path");
