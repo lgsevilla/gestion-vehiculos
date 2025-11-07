@@ -25,5 +25,6 @@ use App\Models\Moto;
                 </li>
             <?php endforeach; ?>
         </ul>
+        <p><a href="/index.html">Volver al inicio</a></p>
     </body>
 </html>

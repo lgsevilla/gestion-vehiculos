@@ -91,7 +91,69 @@ array (
     'tipo' => 'moto',
     'sidecar' => true,
   ),
-
+  10 => 
+  array (
+    'id' => 20,
+    'marca' => 'Renault',
+    'modelo' => 'Clio',
+    'anio' => 2020,
+    'tipo' => 'coche',
+    'puertas' => 5,
+  ),
+  11 => 
+  array (
+    'id' => 11,
+    'marca' => 'Renault',
+    'modelo' => 'Clio',
+    'anio' => 2020,
+    'tipo' => 'coche',
+    'puertas' => 5,
+  ),
+  12 => 
+  array (
+    'id' => 12,
+    'marca' => 'SEAT',
+    'modelo' => 'Ibiza',
+    'anio' => 2018,
+    'tipo' => 'coche',
+    'puertas' => 3,
+  ),
+  13 => 
+  array (
+    'id' => 13,
+    'marca' => 'Toyota',
+    'modelo' => 'Corolla',
+    'anio' => 2022,
+    'tipo' => 'coche',
+    'puertas' => 3,
+  ),
+  14 => 
+  array (
+    'id' => 14,
+    'marca' => 'Yamaha',
+    'modelo' => 'MT-07',
+    'anio' => 2021,
+    'tipo' => 'moto',
+    'sidecar' => false,
+  ),
+  15 => 
+  array (
+    'id' => 15,
+    'marca' => 'Harley-Davidson',
+    'modelo' => 'Sportster',
+    'anio' => 2019,
+    'tipo' => 'moto',
+    'sidecar' => true,
+  ),
+  16 => 
+  array (
+    'id' => 16,
+    'marca' => 'Honda',
+    'modelo' => 'PCX 125',
+    'anio' => 2023,
+    'tipo' => 'moto',
+    'sidecar' => false,
+  ),
 )
 );
 ?>
