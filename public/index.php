@@ -32,6 +32,11 @@ function request(): void
         if ($id > 0) {
             $veh = $controller->getById($id);
 
+            // testing object vs array
+            echo '<pre>';
+            var_dump($veh, is_object($veh) ? get_class($veh) : 'not an object');
+            exit;
+            // end of test code
             if ($veh) {
                 require __DIR__ . '/../app/Views/vehiculo_get.php';
                 exit;
